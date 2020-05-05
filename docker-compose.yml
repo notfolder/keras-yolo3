@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  keras-yolo3:
+    image: keras-yolo3
+    container_name: keras-yolo3
+    build:
+      context: .
+      args:
+        USER_NAME: ${USER_NAME}
+        USER_ID: ${USER_ID}
+        GROUP_ID: ${GROUP_ID}
+    user: "${USER_ID}:${GROUP_ID}"
+    tty: true
+    stdin_open: true
+    volumes:
+      - /home/${USER_NAME}/work:/home/${USER_NAME}/work
+    command: /bin/bash -login
